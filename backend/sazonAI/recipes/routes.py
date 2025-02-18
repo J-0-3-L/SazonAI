@@ -14,6 +14,9 @@ class RecipesResource(Resource):
     def post(self):
         ingredients = request.get_json()
 
+        if not ingredients or len(ingredients)==0:
+            return {'message': 'Ingrese el ingrediente'}, 400
+
         ingredients_limit = ingredients[:10]
         ingredients_str = ", ".join(ingredients_limit)
 
