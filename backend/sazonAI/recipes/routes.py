@@ -44,4 +44,5 @@ class RecipesResource(Resource):
         
     
     def get(self):
-        pass
+        
+        return {'recipes': generate_recipes}, 200
