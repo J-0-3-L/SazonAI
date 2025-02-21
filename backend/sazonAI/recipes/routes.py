@@ -8,16 +8,15 @@ load_dotenv()
 
 api = Namespace('recipes',description='Operacion de recetas')
 
-recipe_model = api.model('Recipe',{
+ingredient_model = api.model('Ingredient',{
     'ingredient': fields.String(required=True),
     'ingredients': fields.List(fields.String, required=True)
 })
 
-
-recipe_response_model = api.model('RecipeResponse', {
-    'recipes': fields.List(fields.Nested(api.model('SingleRecipe', {
-        'recipe': fields.String(required=True)
-    })))
+recipe_model = api.model('Recipes', {
+    'recipes': fields.List(fields.Nested(api.model('Recipe', {
+        'recipe': fields.String(required=True)})
+    ))
 })
 
 api_key = os.getenv('YOUR_API_KEY')
@@ -30,8 +29,8 @@ generate_recipes = []
 class RecipesResource(Resource):
 
 
-    @api.marshal_with(recipe_response_model)
-    @api.expect(recipe_model)
+    @api.marshal_with(recipe_model)
+    @api.expect(ingredient_model)
     def post(self):
                
         data = request.get_json()
@@ -57,28 +56,21 @@ class RecipesResource(Resource):
             contents = prompt,
             #max_output_tokens = 150
         )
-
-        #print(response)
-
+        
         recipes = response.text
         recipe_list = recipes.split("\n")
-        #print(recipe_list)
-
+              
         clean_recipes = []
 
         for recipe in recipe_list:
             recipe_name = recipe.strip()
 
-            if recipe_name.startswith("*"):
-                recipe_name = recipe_name.lstrip("*").strip()
-
             if recipe_name:
                 clean_recipes.append({'recipe':recipe_name})
-
-        #print(clean_recipes)    
+ 
         generate_recipes.append(clean_recipes)
 
-        return 'ok', 201
+        return {'message':'ok'}, 200
         
     
     def get(self):
