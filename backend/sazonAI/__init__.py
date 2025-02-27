@@ -18,7 +18,7 @@ def create_app():
 
     with app.app_context():
         
-        from sazonAI.recipes.routes import api as recipes_api
+        from sazonAI.recipes.search.routes import api as recipes_api
         api.add_namespace(recipes_api)
 
     return app
