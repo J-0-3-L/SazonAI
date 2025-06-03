@@ -1,0 +1,25 @@
+---
+import Heart from '../assets/svg/heart.svg'
+---
+
+<footer>
+  Hecho con <Heart fill="red"/> en Astro por Laoui
+</footer>
+
+<style>
+  
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  footer :global(svg) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+</style>
