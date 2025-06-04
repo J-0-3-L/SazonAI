@@ -1,13 +1,13 @@
 ---
-
+import Lupa from '../assets/svg/lupa.svg'
 ---
 <section>
-  <input type="text" placeholder="Escribe ingredientes separados por comas: tomate, arroz, huevo..">
-  <button>Buscar receta</button>
+  <input type="text" placeholder="Escribe ingredientes separados por comas: tomate, arroz, huevo...">
+  <button><Lupa /> Buscar receta</button>
 </section>
 <style>
   section{
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 15px;
     display: flex;
     flex-direction: row;
@@ -17,12 +17,13 @@
     /*margin: 0 350px;*/
   }
 
+  
   input {
     border: none;
     outline: none;
     padding: 12px 20px;
     flex: 1;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 12px 0px 0px 12px;
   }
 
@@ -35,6 +36,10 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
 
   button:hover {
