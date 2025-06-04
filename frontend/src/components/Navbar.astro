@@ -1,5 +1,6 @@
 ---
 import Git from '../assets/svg/git.svg'
+import Linkedin from '../assets/svg/linkedin.svg'
 ---
 <nav>
   <h1>SazonAi</h1>
@@ -9,7 +10,10 @@ import Git from '../assets/svg/git.svg'
     <a href="">Sorprendeme</a>
     <a href="">Acerca de</a>
   </div>
-  <a href=""><Git width={30} height={30}/></a>
+  <div class="info">
+    <a href=""><Git width={30} height={30}/></a>
+    <a href=""><Linkedin width={30} height={30}/></a>
+  </div>
 </nav>
 <style>
   nav{
@@ -28,6 +32,11 @@ import Git from '../assets/svg/git.svg'
     padding: 10px 20px;
     border: 1px solid white;
     background-color: #606060;
+  }
+
+  .info{
+    display: flex;
+    gap: 15px;
   }
 
   a{
