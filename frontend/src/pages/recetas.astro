@@ -1,0 +1,31 @@
+---
+import Footer from "../components/footer.astro";
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import Receta from "../components/Receta.astro";
+
+---
+<Layout>
+  <div class="recetas">
+    <Navbar />
+    <div class="listRecetas">
+      <Receta />
+    </div>
+    <Footer />
+  </div> 
+</Layout>
+
+<style>
+  .recetas{
+
+  }
+
+  .listRecetas {
+    width: 100%;
+
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+</style>
